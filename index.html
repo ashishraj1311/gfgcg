@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UPSC Citizen Charter</title>
+  <style>
+    :root {
+      --primary-blue: #0B3C5D;
+      --accent-gold: #D4AF37;
+      --bg: #F5F7FA;
+      --text: #1f2933;
+      --muted: #4b5563;
+      --white: #ffffff;
+      --border: #d8dee6;
+      --shadow: 0 6px 18px rgba(11, 60, 93, 0.08);
+      --radius: 12px;
+      --space-1: 8px;
+      --space-2: 16px;
+      --space-3: 24px;
+      --space-4: 32px;
+      --space-5: 48px;
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    a { color: var(--primary-blue); }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--accent-gold);
+      outline-offset: 2px;
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--container));
+      margin-inline: auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0B3C5D, #124e78);
+      color: var(--white);
+      padding: var(--space-5) 0;
+    }
+
+    .header-inner {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: var(--space-3);
+      align-items: center;
+    }
+
+    .emblem {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255,255,255,0.8);
+      display: grid;
+      place-items: center;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: var(--space-1);
+      background: rgba(255,255,255,0.07);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.85rem, 3vw, 2rem);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin: var(--space-2) 0 var(--space-3);
+      max-width: 70ch;
+      color: #e5edf3;
+    }
+
+    .btn {
+      background: var(--accent-gold);
+      color: #111827;
+      border: none;
+      padding: 0.72rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      text-decoration: none;
+    }
+
+    .btn.secondary {
+      background: var(--white);
+      color: var(--primary-blue);
+      border: 1px solid var(--primary-blue);
+    }
+
+    main section {
+      padding: var(--space-4) 0;
+    }
+
+    h2 {
+      margin: 0 0 var(--space-3);
+      color: var(--primary-blue);
+      font-size: clamp(1.45rem, 2.2vw, 1.8rem);
+      line-height: 1.3;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: var(--space-3);
+      height: 100%;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: var(--space-1);
+      color: var(--primary-blue);
+      font-size: 1.05rem;
+    }
+
+    .timeline {
+      position: relative;
+      margin-left: 8px;
+      padding-left: var(--space-3);
+      border-left: 3px solid #b7c8d8;
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .timeline-item { position: relative; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: calc(-1 * (var(--space-3) + 8px));
+      top: 7px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+      border: 2px solid var(--primary-blue);
+    }
+
+    .year {
+      font-weight: 700;
+      color: var(--primary-blue);
+      font-size: 1.1rem;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+    }
+
+    .icon-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: var(--space-1);
+    }
+
+    .icon-list li {
+      position: relative;
+      padding-left: 1.6rem;
+    }
+
+    .icon-list li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-gold);
+      font-size: 0.85rem;
+      transform: translateY(0.3rem);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: var(--space-2);
+      align-items: stretch;
+    }
+
+    .step {
+      position: relative;
+      text-align: center;
+      font-weight: 600;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: var(--space-3);
+    }
+
+    .step:not(:last-child)::after {
+      content: "➜";
+      position: absolute;
+      right: -15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary-blue);
+      font-size: 1.2rem;
+      z-index: 1;
+    }
+
+    .exam-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    .support-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: var(--space-3);
+      display: grid;
+      gap: var(--space-2);
+    }
+
+    .support-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+
+    .doc-actions {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    footer {
+      background: #0a2f49;
+      color: #dbe7f0;
+      padding: var(--space-4) 0;
+      margin-top: var(--space-4);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+      margin-top: var(--space-2);
+    }
+
+    .footer-links a { color: #f5f7fa; }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: var(--space-2);
+    }
+
+    .modal[aria-hidden="false"] { display: flex; }
+
+    .modal-dialog {
+      width: min(1200px, 100%);
+      max-height: 96vh;
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .modal-header {
+      padding: var(--space-2);
+      background: var(--primary-blue);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .close-btn {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 6px;
+      padding: 0.35rem 0.7rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .iframe-wrap {
+      overflow: auto;
+      padding: var(--space-2);
+      background: #ecf1f6;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+      min-height: 72vh;
+      background: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .cards-grid,
+      .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .step:not(:last-child)::after { content: ""; }
+      .exam-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner,
+      .two-col,
+      .support-row,
+      .cards-grid,
+      .steps,
+      .exam-grid { grid-template-columns: 1fr; }
+
+      .emblem { width: 70px; height: 70px; }
+
+      .subtitle { margin-bottom: var(--space-2); }
+
+      .modal-dialog { max-height: 100vh; border-radius: 0; }
+      iframe { min-height: 78vh; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="sr-only" style="position:absolute;left:-9999px;">Skip to main content</a>
+
+  <header aria-label="Citizen Charter Header">
+    <div class="container header-inner">
+      <div class="emblem" aria-hidden="true">Govt Emblem</div>
+      <div>
+        <h1>Union Public Service Commission<br>Citizen Charter</h1>
+        <p class="subtitle">Commitment to fair, transparent, and efficient recruitment to civil services and posts under the Government of India.</p>
+        <button class="btn open-modal" type="button" aria-haspopup="dialog" aria-controls="charter-modal">View Full Charter Document</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="container">
+    <section aria-labelledby="summary-title">
+      <h2 id="summary-title">Quick Summary</h2>
+      <div class="cards-grid">
+        <article class="card"><h3>Establishment</h3><p>UPSC established in 1926.</p></article>
+        <article class="card"><h3>Constitutional Status</h3><p>Article 315 of Constitution of India.</p></article>
+        <article class="card"><h3>Core Function</h3><p>Recruitment to Civil Services.</p></article>
+        <article class="card"><h3>Recruitment Methods</h3><p>Examination, Interview, Promotion, Deputation.</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="history-title">
+      <h2 id="history-title">Brief History</h2>
+      <div class="timeline" role="list" aria-label="UPSC historical timeline">
+        <article class="timeline-item" role="listitem"><div class="year">1926</div><p>First Public Service Commission established.</p></article>
+        <article class="timeline-item" role="listitem"><div class="year">1935</div><p>Federal Public Service Commission formed.</p></article>
+        <article class="timeline-item" role="listitem"><div class="year">1950</div><p>UPSC granted Constitutional status.</p></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="mandate-title">
+      <h2 id="mandate-title">Mandate</h2>
+      <div class="two-col">
+        <article class="card">
+          <h3>Recruitment</h3>
+          <ul class="icon-list">
+            <li>Recruitment by competitive examinations</li>
+            <li>Recruitment by selection through interviews</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Advisory Role</h3>
+          <ul class="icon-list">
+            <li>Promotion of officers</li>
+            <li>Transfer and deputation advice</li>
+            <li>Recruitment rule formulation</li>
+            <li>Disciplinary matters</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="methods-title">
+      <h2 id="methods-title">Methods of Recruitment</h2>
+      <div class="steps" aria-label="Recruitment process flow">
+        <div class="step">Direct Recruitment</div>
+        <div class="step">Promotion</div>
+        <div class="step">Deputation / Absorption</div>
+        <div class="step">Composite Method</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="exams-title">
+      <h2 id="exams-title">Examinations Conducted</h2>
+      <div class="exam-grid">
+        <article class="card"><h3>Civil Services Examination</h3><p>Gateway to premier All India and Central Civil Services.</p><a href="#" aria-label="Learn more about Civil Services Examination">Learn More</a></article>
+        <article class="card"><h3>Engineering Services Examination</h3><p>Recruitment of engineering officers for technical services.</p><a href="#" aria-label="Learn more about Engineering Services Examination">Learn More</a></article>
+        <article class="card"><h3>Combined Medical Services</h3><p>Selection of medical officers in various government departments.</p><a href="#" aria-label="Learn more about Combined Medical Services">Learn More</a></article>
+        <article class="card"><h3>Indian Forest Service</h3><p>Entry into forestry and environmental governance services.</p><a href="#" aria-label="Learn more about Indian Forest Service">Learn More</a></article>
+        <article class="card"><h3>Combined Defence Services</h3><p>Officer recruitment for the Army, Navy, and Air Force academies.</p><a href="#" aria-label="Learn more about Combined Defence Services">Learn More</a></article>
+        <article class="card"><h3>National Defence Academy</h3><p>Joint defence training pathway for armed forces cadets.</p><a href="#" aria-label="Learn more about National Defence Academy">Learn More</a></article>
+        <article class="card"><h3>Central Armed Police Forces</h3><p>Recruitment for leadership posts in central armed police forces.</p><a href="#" aria-label="Learn more about Central Armed Police Forces">Learn More</a></article>
+      </div>
+    </section>
+
+    <section aria-labelledby="responsibilities-title">
+      <h2 id="responsibilities-title">Responsibilities of Candidates</h2>
+      <div class="card">
+        <ul>
+          <li>Follow instructions provided in examination notifications.</li>
+          <li>Submit accurate information in applications.</li>
+          <li>Respect examination guidelines.</li>
+          <li>Avoid unfair practices.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="access-title">
+      <h2 id="access-title">Access Information</h2>
+      <div class="support-card">
+        <div class="support-row">
+          <div class="card" style="margin:0;"><h3>Facilitation Counter</h3><p>Available on working days.</p></div>
+          <div class="card" style="margin:0;"><h3>Helpline</h3><p>011-23385271<br>011-23098543</p></div>
+        </div>
+        <div><a class="btn secondary" href="https://www.upsc.gov.in" target="_blank" rel="noopener noreferrer">Visit UPSC Website</a></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="doc-title">
+      <h2 id="doc-title">Official Citizen Charter Document</h2>
+      <div class="card">
+        <p>Read the structured summary above or open the complete official document below.</p>
+        <div class="doc-actions">
+          <button class="btn open-modal" type="button" aria-haspopup="dialog" aria-controls="charter-modal">View Full Document</button>
+          <a class="btn secondary" href="citizen-charter.pdf" download>Download PDF</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>Union Public Service Commission</strong><br>
+      Dholpur House, Shahjahan Road<br>
+      New Delhi – 110069
+      <nav class="footer-links" aria-label="Footer links">
+        <a href="#">About UPSC</a>
+        <a href="#">Examinations</a>
+        <a href="#">Recruitment</a>
+        <a href="#">RTI</a>
+        <a href="#">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <div id="charter-modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 id="modal-title" style="margin:0;color:white;font-size:1.2rem;">Citizen Charter PDF Viewer</h2>
+        <button id="close-modal" class="close-btn" type="button" aria-label="Close document viewer">Close ✕</button>
+      </div>
+      <div class="iframe-wrap">
+        <iframe src="citizen-charter.pdf" title="Official UPSC Citizen Charter PDF document"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const modal = document.getElementById('charter-modal');
+      const openButtons = document.querySelectorAll('.open-modal');
+      const closeButton = document.getElementById('close-modal');
+      let lastActiveElement = null;
+
+      function openModal() {
+        lastActiveElement = document.activeElement;
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        closeButton.focus();
+      }
+
+      function closeModal() {
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        if (lastActiveElement) {
+          lastActiveElement.focus();
+        }
+      }
+
+      openButtons.forEach((btn) => btn.addEventListener('click', openModal));
+      closeButton.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
